@@ -6,6 +6,7 @@
 <title>نظارات السلام الطبية – اطلب نظارتك عن بعد</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Reem+Kufi:wght@600&display=swap" rel="stylesheet">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
 /* يُطبَّق الوضع المحفوظ قبل الرسم لتفادي الوميض */
 try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}
@@ -64,6 +65,13 @@ td input,td select{margin:0;text-align:center;padding:6px 4px}
 .login{background:var(--glass);padding:22px 0;border-top:1px solid var(--line)}
 .login form{display:flex;gap:10px;flex-wrap:wrap;align-items:end}
 .login label{flex:1;min-width:220px}
+.brand-en{direction:ltr;text-align:center;font:800 clamp(22px,4vw,32px)/1.2 Cairo,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--tort);margin-top:6px}
+.cgrid{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.qrcard{background:#fff;color:#1c2b2d;border:1.5px solid var(--line);border-radius:14px;padding:16px;width:230px;text-align:center;font-size:14px;line-height:1.6}
+.qrcard #qr svg{width:100%;height:auto;display:block}
+.qrcard a{color:#8a4b22;font-weight:600}
+.clinks{display:flex;flex-wrap:wrap;gap:12px}
+@media (max-width:720px){.cgrid{grid-template-columns:1fr;justify-items:center}}
 footer{padding:24px 0 36px;text-align:center;font-size:14px}
 footer a{color:var(--ink)}
 @media (max-width:720px){.hero .wrap{grid-template-columns:1fr}.hero svg{max-width:340px;margin:auto}}
@@ -79,12 +87,13 @@ footer a{color:var(--ink)}
    <p>سجّل مقاس نظرك واختر إطارك وعدساتك من البيت. نحضّر نظارتك ونتصل بك عندما تكون جاهزة للاستلام.</p>
    <a class="btn" href="#order">اطلب نظارتك</a>
   </div>
-  <svg viewBox="0 0 400 200" role="img" aria-label="نظارة طبية">
+  <div><svg viewBox="0 0 400 200" role="img" aria-label="نظارة طبية">
    <path class="arm" d="M30 80 L8 60"/><path class="arm" d="M370 80 L392 60"/>
    <circle class="lens" cx="115" cy="100" r="78"/><circle class="lens" cx="285" cy="100" r="78"/>
    <path class="bridge" d="M193 92 Q200 76 207 92"/>
    <path class="tick" d="M60 100h110M115 45v110M230 100h110M285 45v110"/>
   </svg>
+  <div class="brand-en">Al Salam Optique</div></div>
  </div>
 </header>
 
@@ -134,6 +143,9 @@ footer a{color:var(--ink)}
 </section>
 </main>
 
+<section id="contact" hidden><div class="wrap"><h2>زورنا وتواصل معنا</h2><p class="sub">امسح الرمز بهاتفك لفتح موقع المحل على الخريطة.</p>
+ <div class="cgrid"><div class="qrcard" id="qrcard" hidden><div id="qr" role="img" aria-label="رمز QR لموقع المحل على الخريطة"></div><p style="margin:8px 0 0"><a id="maplink" target="_blank" rel="noopener">افتح الخريطة</a></p></div><div class="clinks" id="clinks"></div></div></div></section>
+
 <section class="admin" id="admin" hidden>
  <div class="wrap">
   <h2>إدارة المحل</h2>
@@ -143,10 +155,19 @@ footer a{color:var(--ink)}
   <div class="list" style="margin-bottom:12px"><table style="min-width:560px"><thead><tr><th>النوع</th><th>الاسم</th><th>السعر (دج)</th><th>متاح</th><th></th></tr></thead><tbody id="ptb"></tbody></table></div>
   <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:30px"><button class="btn alt" id="padd" type="button">إضافة صنف</button><button class="btn" id="psave" type="button">حفظ الأسعار</button><span id="pmsg" role="status"></span></div>
 
+  <h3 style="margin:0 0 8px">بيانات التواصل والموقع <small style="font-weight:400">(كلها اختيارية)</small></h3>
+  <div class="grid" style="margin-bottom:10px">
+   <label>رابط موقع المحل على الخريطة (Google Maps، https)<input id="sMap" dir="ltr" placeholder="https://maps.app.goo.gl/..."></label>
+   <label>رابط صفحة الفيسبوك<input id="sFb" dir="ltr" placeholder="https://facebook.com/..."></label>
+   <label>رقم الواتساب (بالصيغة الدولية)<input id="sWa" dir="ltr" inputmode="tel" placeholder="213555000000"></label>
+   <label>البريد الإلكتروني للمحل<input id="sMail" type="email" dir="ltr"></label>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:30px"><button class="btn" id="sSave" type="button">حفظ بيانات التواصل</button><span id="sMsg" role="status"></span></div>
+
   <h3 style="margin:0 0 8px">تغيير رمز المدير</h3>
   <div class="bar"><label>الرمز الجديد (6 أحرف على الأقل)<input id="nk" type="password" dir="ltr" autocomplete="new-password"></label><button class="btn alt" id="nksave" type="button">حفظ الرمز</button><span id="nkmsg" role="status"></span></div>
   <h3 style="margin:24px 0 8px">الطلبات</h3>
-  <div class="bar"><label>ابحث بالاسم أو الهاتف أو البريد<input id="q" type="search" placeholder="اكتب للبحث الفوري"></label><button class="btn alt" id="reload" type="button">تحديث</button><button class="btn alt" id="logout" type="button">خروج</button></div>
+  <div class="bar"><label>ابحث بالاسم أو الهاتف أو البريد<input id="q" type="search" placeholder="اكتب للبحث الفوري"></label><button class="btn alt" id="reload" type="button">تحديث</button><button class="btn" id="xls" type="button">تحميل Excel</button><button class="btn alt" id="logout" type="button">خروج</button></div>
   <div class="list"><table><thead><tr><th>التاريخ</th><th>الاسم</th><th>الهاتف</th><th>الميلاد</th><th>البريد</th><th>المقاس (بعيد | قريب)</th><th>الدفع</th><th>المجموع</th><th>الحالة / إشعار</th></tr></thead><tbody id="rows"></tbody></table><div id="none" class="empty" hidden>لا توجد طلبات مطابقة.</div></div>
  </div>
 </section>
@@ -155,7 +176,7 @@ footer a{color:var(--ink)}
 <footer><a href="#" id="login">دخول المحل</a> · نظارات السلام الطبية · تُراجع جميع الطلبات هاتفياً قبل التصنيع</footer>
 
 <script>
-const API="https://script.google.com/macros/s/AKfycbwmRRBf68IENHEhT9qyT1PtesyJWyMFZDIt7YvxDeB6fIpIRbXnFl_D55mwArD2FTdOXQ/exec";   // ضع هنا رابط Web app من Apps Script
+const API="https://script.google.com/macros/s/AKfycbySQzyTl5hAeP_1209MhJoj6SMapmvwgUJzfwjMd0oL/dev";   // ضع هنا رابط Web app من Apps Script
 const $=id=>document.getElementById(id);
 const RX=["odfs","odfc","odfa","odns","odnc","odna","osfs","osfc","osfa","osns","osnc","osna"];
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -186,7 +207,26 @@ function show(t,c){const m=$("msg");m.className="msg "+c;m.textContent=t}
 function fill(id,arr){$(id).innerHTML=arr.map(x=>`<option value="${esc(x.name)}" data-p="${x.price}">${esc(x.name)} – ${fmt(x.price)} دج</option>`).join("")}
 function total(){const p=i=>+($(i).selectedOptions[0]?.dataset.p||0);const t=p("frame")+p("lens");$("sum").textContent=fmt(t);return t}
 $("frame").onchange=$("lens").onchange=total;
-function loadPublicPrices(){return get("").then(p=>{fill("frame",p.frames||[]);fill("lens",p.lenses||[]);total()})}
+let settings={};
+function loadPublicPrices(){return get("").then(p=>{fill("frame",p.frames||[]);fill("lens",p.lenses||[]);total();settings=p.settings||{};renderContact();fillSettings()})}
+const httpsOk=u=>/^https:\/\/\S+$/.test(u||"");
+function renderContact(){
+ const st=settings||{},links=$("clinks");links.innerHTML="";
+ const add=(txt,href)=>{const a=document.createElement("a");a.className="btn alt";a.textContent=txt;a.href=href;a.target="_blank";a.rel="noopener";links.appendChild(a)};
+ if(/^\d{9,15}$/.test(st.whatsapp||""))add("واتساب","https://wa.me/"+st.whatsapp);
+ if(httpsOk(st.facebook))add("صفحة الفيسبوك",st.facebook);
+ if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(st.email||""))add("البريد: "+st.email,"mailto:"+st.email);
+ const hasMap=httpsOk(st.map);
+ $("qrcard").hidden=!hasMap;
+ if(hasMap){
+  $("maplink").href=st.map;$("qr").innerHTML="";
+  try{const q=qrcode(0,"M");q.addData(st.map);q.make();$("qr").innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true})}
+  catch(e){$("qr").textContent="تعذّر رسم الرمز، استعمل الرابط أدناه."}
+ }
+ $("contact").hidden=!(hasMap||links.children.length);
+}
+addEventListener("load",renderContact);
+function fillSettings(){const st=settings||{};$("sMap").value=st.map||"";$("sFb").value=st.facebook||"";$("sWa").value=st.whatsapp||"";$("sMail").value=st.email||""}
 loadPublicPrices().catch(e=>show("تعذّر تحميل الأسعار: "+e.message,"err"));
 
 /* ---- إرسال الطلب ---- */
@@ -231,9 +271,19 @@ async function loadAdmin(){
 
 /* ---- الطلبات والبحث ---- */
 const rxText=r=>{const g=i=>r.slice(i,i+3).map(v=>v||"–").join("/");return "يمين: "+g(6)+" | "+g(9)+" ‏ يسار: "+g(12)+" | "+g(15)};
+const ar2en=t=>t.replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)).replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d));
+const nat=t=>ar2en(String(t)).replace(/\D/g,"").replace(/^(00)?213/,"").replace(/^0+/,"");   // يوحّد 0555 و555 و+213555
+function filtered(){
+ const q=ar2en($("q").value.trim()).toLowerCase();
+ if(!q)return orders;
+ if(/^[\d\s+()-]+$/.test(q)){              // بحث رقمي: يقبل 0 في البداية وأي صيغة
+  const nq=nat(q),raw=q.replace(/\D/g,"");
+  return orders.filter(o=>nq?nat(o[4]).includes(nq):String(o[4]).replace(/\D/g,"").includes(raw));
+ }
+ return orders.filter(o=>[o[2],o[4],o[5]].join(" ").toLowerCase().includes(q));
+}
 function draw(){
- const q=$("q").value.trim().toLowerCase();
- const r=orders.filter(o=>!q||[o[2],o[4],o[5]].join(" ").toLowerCase().includes(q));
+ const r=filtered();
  $("rows").innerHTML=r.map(o=>{
   const msg=encodeURIComponent("مرحباً "+o[2]+"، نظارتك جاهزة للاستلام في نظارات السلام الطبية.");
   const ready=o[22]==="جاهز"||o[22]==="تم التسليم";
@@ -270,6 +320,31 @@ $("psave").onclick=async()=>{
  }catch(x){m.textContent=x.message}
 };
 
+$("sSave").onclick=async()=>{
+ const m=$("sMsg"),E={bad_map:"رابط الخريطة يجب أن يبدأ بـ https://",bad_facebook:"رابط فيسبوك غير صالح (https://facebook.com/...)",bad_whatsapp:"رقم الواتساب غير صالح",bad_email:"البريد الإلكتروني غير صالح"};
+ m.textContent="جارٍ الحفظ…";
+ try{const r=await post({type:"saveSettings",key,settings:{map:$("sMap").value,facebook:$("sFb").value,whatsapp:$("sWa").value,email:$("sMail").value}});
+  if(r.ok){settings=r.settings;renderContact();fillSettings();m.textContent="تم الحفظ."}else m.textContent=E[r.error]||"تعذّر الحفظ."}
+ catch(x){m.textContent=x.message}
+};
+const HEAD=["المعرّف","التاريخ","الاسم الكامل","تاريخ الميلاد","الهاتف","البريد","يمين-بعيد SPH","يمين-بعيد CYL","يمين-بعيد AXIS","يمين-قريب SPH","يمين-قريب CYL","يمين-قريب AXIS","يسار-بعيد SPH","يسار-بعيد CYL","يسار-بعيد AXIS","يسار-قريب SPH","يسار-قريب CYL","يسار-قريب AXIS","الإطار","العدسات","الدفع","المجموع (دج)","الحالة"];
+function saveBlob(blob,name){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)}
+function loadXlsx(){return window.XLSX?Promise.resolve():new Promise((ok,no)=>{const s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js";s.onload=ok;s.onerror=no;document.head.appendChild(s)})}
+$("xls").onclick=async()=>{
+ const rows=filtered().map(o=>o.map((v,i)=>i===21&&v!==""&&!isNaN(v)?Number(v):v));
+ const name="orders-"+new Date().toISOString().slice(0,10);
+ if(!rows.length){alert("لا توجد طلبات لتحميلها.");return}
+ try{
+  await loadXlsx();
+  const ws=XLSX.utils.aoa_to_sheet([HEAD,...rows]);
+  ws["!cols"]=HEAD.map((h,i)=>({wch:[2,3,4,5].includes(i)?22:i>=18?26:14}));
+  const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Orders");
+  XLSX.writeFile(wb,name+".xlsx");
+ }catch(e){   // بديل: CSV يفتح في Excel
+  const q=v=>'"'+String(v).replace(/"/g,'""')+'"';
+  saveBlob(new Blob(["\ufeff"+[HEAD,...rows].map(r=>r.map(q).join(",")).join("\n")],{type:"text/csv;charset=utf-8"}),name+".csv");
+ }
+};
 $("nksave").onclick=async()=>{
  const n=$("nk").value.trim(),m=$("nkmsg");
  if(n.length<6){m.textContent="الرمز قصير.";return}
