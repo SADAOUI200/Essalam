@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>نظارات السلام الطبية – اطلب نظارتك عن بعد</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Reem+Kufi:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1c2b2d;--glass:#d9ebe8;--paper:#f6faf9;--tort:#8a4b22;--amber:#c98b2b;--line:#b9cfcb;--card:#fff;--ok:#1f7a54;--err:#a8321f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#e7f1ef;--glass:#1d3235;--paper:#111c1e;--tort:#e0a56f;--amber:#e3a94a;--line:#35514f;--card:#182629;--ok:#52c796;--err:#ff8d78}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.8 Cairo,Tahoma,sans-serif}
+h1,h2,h3{font-family:"Reem Kufi",Cairo,sans-serif;font-weight:600;line-height:1.3;margin:0}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+header.hero{background:var(--glass);border-bottom:6px solid var(--tort);padding:36px 0 28px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center}
+.hero h1{font-size:clamp(34px,6vw,58px)}
+.hero p{max-width:34em;margin:12px 0 20px}
+.btn{display:inline-block;border:0;border-radius:999px;background:var(--tort);color:#fff;font:800 17px Cairo,sans-serif;padding:11px 28px;cursor:pointer;text-decoration:none}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.hero svg{width:100%;height:auto}
+.hero svg .lens{fill:var(--paper);stroke:var(--tort);stroke-width:7}
+.hero svg .bridge,.hero svg .arm{fill:none;stroke:var(--tort);stroke-width:7;stroke-linecap:round}
+.hero svg .tick{stroke:var(--ink);stroke-width:2;opacity:.5}
+section{padding:36px 0}
+section h2{font-size:30px;margin-bottom:6px}
+.sub{margin:0 0 20px;opacity:.8}
+fieldset{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px 20px;margin:0 0 20px}
+legend{font:600 20px "Reem Kufi",Cairo;padding:0 8px;color:var(--tort)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+label{display:block;font-weight:600;font-size:15px}
+input,select{width:100%;font:400 16px Cairo,sans-serif;padding:9px 12px;margin-top:4px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.rx{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:center;font-size:15px}
+th{background:var(--glass)}
+td input{margin:0;text-align:center;padding:6px 4px}
+.rx small{display:block;margin-top:8px;opacity:.75}
+.pay{display:grid;gap:10px}
+.pay label{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--paper);cursor:pointer}
+.pay input{width:auto;margin:6px 0 0}
+.pay span{font-weight:400;font-size:14px;opacity:.8;display:block}
+.total{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font:600 22px "Reem Kufi",Cairo}
+.msg{margin-top:14px;padding:12px 16px;border-radius:12px;display:none}
+.msg.ok{display:block;background:color-mix(in srgb,var(--ok) 15%,transparent);border:1.5px solid var(--ok)}
+.msg.err{display:block;background:color-mix(in srgb,var(--err) 15%,transparent);border:1.5px solid var(--err)}
+.admin{border-top:6px solid var(--tort);background:var(--glass)}
+.bar{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin-bottom:14px}
+.bar label{flex:1;min-width:240px}
+.list{overflow-x:auto}
+.list table{min-width:760px;background:var(--card)}
+.list td{text-align:right}
+.empty{padding:20px;text-align:center;opacity:.7}
+footer{padding:24px 0 36px;text-align:center;font-size:14px;opacity:.75}
+@media (max-width:720px){.hero .wrap{grid-template-columns:1fr}.hero svg{max-width:340px;margin:auto}}
+@media (prefers-reduced-motion:no-preference){.hero svg .lens{animation:focus 1.6s ease-out both}@keyframes focus{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}.hero svg .lens{transform-box:fill-box;transform-origin:center}}
+</style>
+</head>
+<body>
+<header class="hero">
+ <div class="wrap">
+  <div>
+   <h1>نظارات السلام الطبية</h1>
+   <p>سجّل مقاس نظرك واختر إطارك وعدساتك من البيت. نحضّر نظارتك ونتصل بك عندما تكون جاهزة للاستلام.</p>
+   <a class="btn" href="#order">اطلب نظارتك</a>
+  </div>
+  <svg viewBox="0 0 400 200" role="img" aria-label="نظارة طبية">
+   <path class="arm" d="M30 80 L8 60"/><path class="arm" d="M370 80 L392 60"/>
+   <circle class="lens" cx="115" cy="100" r="78"/><circle class="lens" cx="285" cy="100" r="78"/>
+   <path class="bridge" d="M193 92 Q200 76 207 92"/>
+   <path class="tick" d="M60 100h110M115 45v110M230 100h110M285 45v110"/>
+  </svg>
+ </div>
+</header>
+
+<main class="wrap">
+<section id="order">
+ <h2>طلب نظارة جديدة</h2>
+ <p class="sub">املأ الحقول بدقة، ويمكنك أخذ المقاس من وصفة طبيب العيون.</p>
+ <form id="f" novalidate>
+  <fieldset><legend>بياناتك</legend>
+   <div class="grid">
+    <label>الاسم الكامل<input id="name" required autocomplete="name"></label>
+    <label>تاريخ الميلاد<input id="dob" type="date" required autocomplete="bday"></label>
+    <label>رقم الهاتف<input id="phone" type="tel" inputmode="tel" required autocomplete="tel" placeholder="0555 00 00 00" dir="ltr" style="text-align:right"></label>
+    <label>البريد الإلكتروني<input id="email" type="email" required autocomplete="email" dir="ltr" style="text-align:right"></label>
+   </div>
+  </fieldset>
+
+  <fieldset><legend>مقاس النظارة</legend>
+   <div class="rx"><table>
+    <thead><tr><th rowspan="2"></th><th colspan="3">للبعيد</th><th colspan="3">للتقريب</th></tr>
+    <tr><th>كروي SPH</th><th>أسطواني CYL</th><th>المحور AXIS</th><th>كروي SPH</th><th>أسطواني CYL</th><th>المحور AXIS</th></tr></thead>
+    <tbody>
+     <tr><th>العين اليمنى</th><td><input id="odfs" inputmode="decimal" placeholder="-1.25"></td><td><input id="odfc" inputmode="decimal"></td><td><input id="odfa" inputmode="numeric"></td><td><input id="odns" inputmode="decimal"></td><td><input id="odnc" inputmode="decimal"></td><td><input id="odna" inputmode="numeric"></td></tr>
+     <tr><th>العين اليسرى</th><td><input id="osfs" inputmode="decimal"></td><td><input id="osfc" inputmode="decimal"></td><td><input id="osfa" inputmode="numeric"></td><td><input id="osns" inputmode="decimal"></td><td><input id="osnc" inputmode="decimal"></td><td><input id="osna" inputmode="numeric"></td></tr>
+    </tbody></table>
+    <small>اترك الخانة فارغة إذا لم تكن لديك قيمة لها. يُراجع نظّارنا المقاس قبل التصنيع.</small>
+   </div>
+  </fieldset>
+
+  <fieldset><legend>اختيارك</legend>
+   <div class="grid">
+    <label>الإطار
+     <select id="frame"></select></label>
+    <label>العدسات
+     <select id="lens"></select></label>
+   </div>
+  </fieldset>
+
+  <fieldset><legend>طريقة الدفع</legend>
+   <div class="pay">
+    <label><input type="radio" name="pay" value="online" checked><div>دفع إلكتروني بالبطاقة (الذهبية / CIB)<span>يُسجَّل الطلب بحالة «بانتظار الدفع» ونرسل لك رابط الدفع الآمن.</span></div></label>
+    <label><input type="radio" name="pay" value="shop"><div>الدفع في المحل عند الاستلام</div></label>
+   </div>
+  </fieldset>
+
+  <div class="total"><span>المجموع: <b id="sum">0</b> دج</span><button class="btn" type="submit" id="go">أرسل الطلب</button></div>
+  <div id="msg" class="msg" role="status"></div>
+ </form>
+</section>
+</main>
+
+<section class="admin" id="admin" hidden>
+ <div class="wrap">
+  <h2>الطلبات والبحث</h2>
+  <p class="sub">يفتح بمفتاح المدير فقط. غيّر الأسعار من ورقة Prices في الجدول.</p>
+  <div class="bar">
+   <label>ابحث بالاسم أو الهاتف أو البريد<input id="q" type="search" placeholder="اكتب للبحث الفوري"></label>
+   <button class="btn alt" id="csv" type="button">فتح الطلبات في جوجل شيت</button>
+  </div>
+  <div class="list"><table><thead><tr><th>التاريخ</th><th>الاسم</th><th>الهاتف</th><th>الميلاد</th><th>البريد</th><th>المقاس (بعيد/قريب)</th><th>الدفع</th><th>المجموع</th><th>الحالة / إشعار</th></tr></thead><tbody id="rows"></tbody></table><div id="none" class="empty" hidden>لا توجد طلبات مطابقة.</div></div>
+ </div>
+</section>
+<footer><a href="#" id="login">دخول المحل</a> · نظارات السلام الطبية · تُراجع جميع الطلبات هاتفياً قبل التصنيع</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const RX=["odfs","odfc","odfa","odns","odnc","odna","osfs","osfc","osfa","osns","osnc","osna"];
+let db=null,uid=null,orders=[];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&<script>
+const API="https://docs.google.com/spreadsheets/d/1EprOt2guJVeENXSzu8sOzJdxdeUTop719C07v3N62z4/edit";   // رابط Web app من Apps Script
+const $=id=>document.getElementById(id);
+const RX=["odfs","odfc","odfa","odns","odnc","odna","osfs","osfc","osfa","osns","osnc","osna"];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt=n=>Number(n).toLocaleString("fr-DZ");
+let prices={frames:[],lenses:[]},orders=[],key=sessionStorage.getItem("k")||"";
+const post=b=>fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(b)}).then(r=>r.json());
+const get=q=>fetch(API+"?"+q).then(r=>r.json());
+function show(t,c){const m=$("msg");m.className="msg "+c;m.textContent=t}
+function fill(id,arr){$(id).innerHTML=arr.map(x=>`<option value="${esc(x.name)}" data-p="${x.price}">${esc(x.name)} – ${fmt(x.price)} دج</option>`).join("")}
+function total(){const p=o=>+($(o).selectedOptions[0]?.dataset.p||0);const t=p("frame")+p("lens");$("sum").textContent=fmt(t);return t}
+$("frame").onchange=$("lens").onchange=total;
+get("action=prices").then(p=>{prices=p;fill("frame",p.frames);fill("lens",p.lenses);total()}).catch(()=>show("تعذّر تحميل الأسعار. أعد تحميل الصفحة.","err"));
+
+$("f").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const name=$("name").value.trim(),phone=$("phone").value.trim(),email=$("email").value.trim(),dob=$("dob").value;
+ if(!name||!dob||!phone||!email) return show("أكمل الاسم وتاريخ الميلاد والهاتف والبريد الإلكتروني.","err");
+ if(!/^[+\d\s]{8,16}$/.test(phone)) return show("رقم الهاتف غير صالح. اكتب أرقاماً فقط.","err");
+ if(!/^\S+@\S+\.\S+$/.test(email)) return show("البريد الإلكتروني غير صالح.","err");
+ const o={type:"order",name,dob,phone,email,frame:$("frame").value,lens:$("lens").value,
+  pay:document.querySelector('[name=pay]:checked').value};
+ RX.forEach(k=>o[k]=$(k).value.trim());
+ $("go").disabled=true;
+ try{const r=await post(o);
+  if(r.ok){show("تم تسجيل طلبك رقم "+r.id+". سنتصل بك على "+phone+" ونراسلك عند جاهزيته.","ok");$("f").reset();total()}
+  else show("لم يُقبل الطلب. تحقق من البيانات وحاول مجدداً.","err")
+ }catch(x){show("تعذّر إرسال الطلب. تحقق من الاتصال وحاول مرة أخرى.","err")}
+ $("go").disabled=false;
+});
+
+/* ---- فضاء المحل ---- */
+const C={id:0,date:1,name:2,dob:3,phone:4,email:5,pay:20,total:21,status:22};
+const rxText=r=>{const g=i=>r.slice(i,i+3).map(v=>v||"–").join("/");return "يمين: "+g(6)+" | "+g(9)+"  يسار: "+g(12)+" | "+g(15)};
+function draw(){
+ const q=$("q").value.trim().toLowerCase();
+ const r=orders.filter(o=>!q||[o[2],o[4],o[5]].join(" ").toLowerCase().includes(q));
+ $("rows").innerHTML=r.map(o=>{
+  const msg=encodeURIComponent("مرحباً "+o[2]+"، نظارتك جاهزة للاستلام في نظارات السلام الطبية.");
+  return `<tr><td>${esc(o[1].slice(0,10))}</td><td>${esc(o[2])}</td><td dir="ltr">${esc(o[4])}</td><td>${esc(o[3].slice(0,10))}</td><td dir="ltr">${esc(o[5])}</td><td dir="ltr" style="font-size:13px">${esc(rxText(o))}</td><td>${esc(o[20])}</td><td>${fmt(o[21]||0)} دج</td>
+  <td>${esc(o[22])}<br>${o[22]==="جاهز"?"":`<button class="btn alt" data-id="${esc(o[0])}" style="padding:2px 12px;font-size:14px">جاهز + بريد</button> `}<a href="sms:${esc(o[4])}?body=${msg}">رسالة SMS</a></td></tr>`}).join("");
+ $("none").hidden=r.length>0;
+}
+async function loadAdmin(){
+ const r=await get("action=orders&key="+encodeURIComponent(key));
+ if(r.error){sessionStorage.removeItem("k");key="";$("admin").hidden=true;return show("مفتاح المدير غير صحيح.","err")}
+ orders=r.orders;$("admin").hidden=false;draw();$("admin").scrollIntoView();
+}
+$("login").onclick=e=>{e.preventDefault();const k=prompt("مفتاح المدير:");if(k){key=k;sessionStorage.setItem("k",k);loadAdmin()}};
+$("q").oninput=draw;
+$("rows").onclick=async e=>{const id=e.target.dataset?.id;if(!id)return;e.target.disabled=true;
+ const r=await post({type:"status",key,id,status:"جاهز"});if(r.ok)loadAdmin();else{alert("تعذّر التحديث");e.target.disabled=false}};
+$("csv").onclick=()=>alert("افتح ملف «نظارات السلام الطبية – الطلبات» من Google Drive.");
+if(key)loadAdmin();
+</script>
